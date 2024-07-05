@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "nome": "FRONT END",
+        "cor":"#6BD1FF"
+    },
+    {
+        "id": 2,
+        "nome": "BACK END",
+        "cor":"#00C86F"
+    }
+]
