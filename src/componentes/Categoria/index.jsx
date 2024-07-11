@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Cards from "../Cards"
-
+import categoriaData from '../../json/categoria.json'
+import { useEffect, useState } from "react"
 const Container = styled.div`
     max-width: 1440px;
     margin: 0 auto;
@@ -9,9 +10,9 @@ const Container = styled.div`
 `
 const CategoriaStyle = styled.div`
     font-family: Roboto;
-    color: aliceblue;
+    color: #fff;
     h1{
-        background-color: #6BD1FF;
+        background-color: ${props => props.corDeFundo};
         max-width: 432px;
         height: 70px;
         display: flex;
@@ -33,19 +34,32 @@ const AreaCard = styled.section`
 
 
 export default function Categoria() {
+    const [videos, setVideos] = useState([])
+    useEffect(() => {
+        fetch('https://my-json-server.typicode.com/KingsNofsky/video-api/videos')
+            .then(resposta => resposta.json())
+            .then(dados => { 
+                setVideos(dados)
+            })
+    },[])
+
+    const categorias = categoriaData[0]
+
     return (
         <Container>
-            
-            <CategoriaStyle>
-                <h1>FRONT END</h1>
+
+            <CategoriaStyle corDeFundo={categorias.cor}>
+                <h1>{categorias.nome}</h1>
             </CategoriaStyle>
             <AreaCard>
-                <Cards />
-                <Cards />
+            {videos.map((video) => {
+                    return <Cards {...video} key={video.id} />
+                })}
+
             </AreaCard>
 
         </Container>
 
-        
+
     )
 }

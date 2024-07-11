@@ -66,7 +66,6 @@ export default function Card(props) {
                 >
                 </iframe>
             </div>
-
         </CardStyle>
     )
 }

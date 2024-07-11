@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import Card from './Card'; 
+import Card from '../Card'; 
+import videosData from '../../json/db.json'
+import categoriasData from "../../json/categoria.json"
+
 
 const DivBanner = styled.div`
     max-width: 1440px;
@@ -16,21 +19,22 @@ const BannerStyle = styled.div`
     background-position: center center;
     background-repeat: no-repeat;
     margin-top: -125px;
-    border: 4px solid #167ac6;
+    border: 4px solid ${props => props.corBorda};
     border-radius:5px;
 `;
 
 export default function Banner() {
-    const urldefundoimagem = 'https://i.ytimg.com/vi/c8mVlakBESE/hq720.jpg';
+    const primeiroVideo = videosData.videos[3]
+    const categoriaCor = categoriasData[2]
 
     return (
-        <DivBanner>
-            <BannerStyle urldefundoimagem={urldefundoimagem}>
-                <Card
-                    categoria='FRONT END'
-                    titulo='SEO com React'
-                    descricao='Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas dicas sobre performance e de quebra conhecer uma plataforma sensacional pra fazer deploy que é a Vercel. Tudo em 22 minutos nesse vídeo feito com todo o carinho do mundo construindo uma "Pokedex"!'
-                    video="https://www.youtube.com/embed/9SL338CTdYA"
+        <DivBanner >
+            <BannerStyle urldefundoimagem={primeiroVideo.thumbnail} corBorda={categoriaCor.cor}>
+                <Card 
+                    categoria={primeiroVideo.categoria}
+                    titulo={primeiroVideo.titulo}
+                    descricao={primeiroVideo.descricao}
+                    video={primeiroVideo.video}
                 />
             </BannerStyle>
         </DivBanner>

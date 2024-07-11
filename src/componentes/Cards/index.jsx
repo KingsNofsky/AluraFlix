@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import { CiTrash, CiEdit } from "react-icons/ci";
+import videosData from '../../json/db.json'
+import categoriasData from '../../json/categoria.json'
 
 const Imagem = styled.div`
-    background: url(https://i.ytimg.com/vi/z3aS5AwhJSU/hq720.jpg);
-    border: 4px solid #6BD1FF;
-    box-shadow: inset 0px 0px 17px 8px #6BD1FF;
+    background: url(${props => props.urlThumbnail});
+    border: 4px solid ${props => props.corBorda};
+    box-shadow: inset 0px 0px 17px 8px ${props => props.corBorda};
     border-radius: 4px 4px 0px 0px;
     width: 432px;
     height: 260.85px;
@@ -36,8 +38,8 @@ const EditDeleteStyle = styled.div`
     background-color: rgba(0, 0, 0, 0.9);
     border-width: 0px 5px 5px 5px;
     border-style: solid;
-    border-color: #6BD1FF;
-    box-shadow: inset 0px -4px 5px 3px #6BD1FF;
+    border-color: ${props => props.corBorda};
+    box-shadow: inset 0px -4px 5px 3px ${props => props.corBorda};
     border-radius: 0px 0px 15px 15px;
     display: flex;
     align-items: center;
@@ -54,16 +56,18 @@ const EditDeleteStyle = styled.div`
         cursor: pointer;
         svg{
             margin-right: 5px;
-        font-size: 24px;
+            font-size: 24px;
         }
     }
 `
 
 export default function Cards() {
+    const imagemThumb = videosData.videos[0]
+    const categoriaCor = categoriasData[0]
     return (
         <StiloSection>
-            <Imagem></Imagem>
-            <EditDeleteStyle>
+            <Imagem urlThumbnail={imagemThumb.thumbnail} corBorda={categoriaCor.cor}/>
+            <EditDeleteStyle corBorda={categoriaCor.cor}>
                 <ul>
                     <li><button> <CiTrash /> DELETAR</button></li>
                     <li><button> <CiEdit /> EDITAR </button></li>

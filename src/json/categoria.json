@@ -8,5 +8,10 @@
         "id": 2,
         "nome": "BACK END",
         "cor":"#00C86F"
+    },
+    {
+        "id": 3,
+        "nome": "MOBILE",
+        "cor":"#FFBA05"
     }
 ]

@@ -1,4 +1,6 @@
 import styled from "styled-components"
+import CampoTexto from "../../componentes/CampoTexto"
+import ListaSuspensa from "../../componentes/ListaSuspensa"
 
 const NovoStyle = styled.div`
     display: flex;
@@ -6,7 +8,6 @@ const NovoStyle = styled.div`
     gap:47px;
     margin: 0 auto;
     max-width: 1360px;
-    height: 1192px;
     color: #fff;
     font-family: Roboto;
     text-align: center;
@@ -32,7 +33,30 @@ const Titulo = styled.h1`
     font-size: 60px;
     font-weight: bold;
 `
-export default function NovoVideo() {
+export default function NovoVideo(props) {
+    
+
+    // const categoria = [
+    //     {
+    //         nome:'FRONT END',
+    //         cor:'#6BD1FF'
+    //     },
+    //     {
+    //         nome:'BACK END',
+    //         cor:'#00C86F'
+    //     },
+    //     {
+    //         nome:'MOBILE',
+    //         cor:'#FFBA05'
+    //     },
+    // ]
+    // const [cards, setCards] = useState([])
+
+    // const aoNovoCardAdicionado = (card) => {
+    //     setCards([...cards, card])
+    // }
+    
+
     return (
         <NovoStyle>
             <section>
@@ -44,10 +68,20 @@ export default function NovoVideo() {
             </div>
 
             <form action="">
-                <label>Titulo</label>
-                <input type="text" placeholder="Titulo" />
-                <label>Categoria</label>
-                <input type="text" placeholder="Categoria" />
+
+                <CampoTexto 
+                    obrigatorio={true}
+                    label="Titulo"
+                    placeholder="  Titulo do Video"
+                />
+                {/* <ListaSuspensa
+                    obrigatorio={true}
+                    label="Categoria"
+                    itens={props.categorias}
+                    valor={categoria}
+                    aoAlterado={valor => setCategoria(valor)}
+                /> */}
+                
             </form>
         </NovoStyle>
     )
