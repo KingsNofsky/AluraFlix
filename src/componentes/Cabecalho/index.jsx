@@ -36,7 +36,7 @@ const CabecalhoStyle = styled.header`
 export default function Cabecalho() {
     const location = useLocation()
     const ehNovoVideo = location.pathname === '/novo-video'
-    const categoriaCor = categoriasData[2]
+    const categoriaCor = categoriasData[0]
 
     return (
         <CabecalhoStyle ehNovoVideo={ehNovoVideo} corBorda={categoriaCor.cor}>
