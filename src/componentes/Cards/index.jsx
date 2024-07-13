@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { CiTrash, CiEdit } from "react-icons/ci";
+import React from 'react';
+import styled from 'styled-components';
+import { CiTrash, CiEdit } from 'react-icons/ci';
 
 const Imagem = styled.div`
   background: url(${props => props.urlThumbnail});
@@ -9,6 +10,7 @@ const Imagem = styled.div`
   width: 432px;
   height: 260.85px;
   background-size: cover;
+  cursor: pointer;
 `;
 
 const StiloSection = styled.section`
@@ -59,16 +61,24 @@ const EditDeleteStyle = styled.div`
   }
 `;
 
-export default function Cards({ post, categoria }) {
-    return (
-        <StiloSection>
-            <Imagem urlThumbnail={post.thumbnail} corBorda={categoria.cor} />
-            <EditDeleteStyle corBorda={categoria.cor}>
-                <ul>
-                    <li><button> <CiTrash /> DELETAR</button></li>
-                    <li><button> <CiEdit /> EDITAR </button></li>
-                </ul>
-            </EditDeleteStyle>
-        </StiloSection>
-    );
+export default function Cards({ post, categoria, onClick }) {
+  const handleImageClick = () => {
+    onClick(post); // Passa o objeto completo do vídeo para a função recebida via props
+  };
+
+  return (
+    <StiloSection>
+      <Imagem
+        urlThumbnail={post.thumbnail}
+        corBorda={categoria.cor}
+        onClick={handleImageClick}
+      />
+      <EditDeleteStyle corBorda={categoria.cor}>
+        <ul>
+          <li><button> <CiTrash /> DELETAR</button></li>
+          <li><button> <CiEdit /> EDITAR </button></li>
+        </ul>
+      </EditDeleteStyle>
+    </StiloSection>
+  );
 }

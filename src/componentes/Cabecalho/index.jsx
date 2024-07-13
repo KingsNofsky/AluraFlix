@@ -12,7 +12,7 @@ const CabecalhoStyle = styled.header`
     height:125px ;
     align-content: center;
     margin: 0 auto;
-    z-index: 1;
+    z-index: 99;
     position: relative;
     
     nav{

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 const CardStyle = styled.div`
     display: flex;
@@ -42,12 +42,9 @@ const CardStyle = styled.div`
     iframe{
         border-radius: 4px;
     }
-`
+`;
 
-
-export default function Card(props) {
-    const { categoria, titulo, descricao, video } = props
-
+export default function Card({ categoria, titulo, descricao, video }) {
     return (
         <CardStyle>
             <section>
@@ -57,15 +54,15 @@ export default function Card(props) {
             </section>
             <div>
                 <iframe
+                    title="Embedded Video"
                     src={video}
                     frameBorder="0"
                     width='100%'
                     height="100%"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                >
-                </iframe>
+                    allowFullScreen
+                />
             </div>
         </CardStyle>
-    )
+    );
 }
