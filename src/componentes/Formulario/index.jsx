@@ -1,60 +1,95 @@
-import CampoFormulario from "../CampoFormulario"
-import styles from './Formulario.module.css'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import CampoFormulario from "../CampoFormulario";
+import ListaSuspensa from "../ListaSuspensa";
+import Textarea from "../Textarea";
+import BotaoFormulario from "../BotaoFormulario";
+import { criarVideo } from '../../lib/axios';
+
+const FormStyle = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #fff;
+    font-family: Roboto;
+
+    div {
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+
+    h1, h2, p {
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 10px;
+        background-color: #6BD1FF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="reset"] {
+        background-color: #FF6B6B;
+    }
+`;
 
 function Formulario({ aoCadastrar, categorias }) {
-
     const [formData, setFormData] = useState({
         titulo: '',
         descricao: '',
         imagem: '',
-        link: '',
+        video: '',
         categoria: '',
-    })
+    });
 
     const limparFormulario = () => {
         setFormData({
             titulo: '',
             descricao: '',
             imagem: '',
-            link: '',
+            video: '',
             categoria: '',
-        })
-    }
+        });
+    };
 
     const aoSalvar = async (evento) => {
-        evento.preventDefault()
-        // console.log('Form foi submetido! => ',titulo, imagem, link, categoria, descricao)
+        evento.preventDefault();
         try {
-            const response = await fetch(api, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            })
-
-            if (response.ok) {
-                console.log('Vídeo cadastrado com sucesso!')
-                alert('Vídeo cadastrado com sucesso!')
-                limparFormulario()
-                aoCadastrar(formData)
+            const response = await criarVideo(formData);
+            if (response.status === 201 || response.status === 200) {
+                console.log('Vídeo cadastrado com sucesso!');
+                alert('Vídeo cadastrado com sucesso!');
+                limparFormulario();
+                aoCadastrar(formData);
             }
         } catch (error) {
-            console.error('Erro na requisição:', error)
-            alert('Erro no cadastro!')
+            console.error('Erro na requisição:', error);
+            alert('Erro no cadastro!');
         }
-    }
+    };
 
     return (
-        <form onSubmit={aoSalvar} onReset={limparFormulario} className={styles.formulario} >
-            <div className={styles.cabecalho}>
-                <h1>Novo vídeo</h1>
-                <p>Complete o formulário para criar um novo card de vídeo.</p>
-            </div>
+        <FormStyle onSubmit={aoSalvar} onReset={limparFormulario}>
 
-            <div className={styles.sessaoCampos}>
-                <h2>Criar Card</h2>
-                <div className={styles.campos}>
                     <CampoFormulario
                         obrigatorio={true}
                         label="Título"
@@ -63,17 +98,15 @@ function Formulario({ aoCadastrar, categorias }) {
                         aoAlterado={(valor) => setFormData({ ...formData, titulo: valor })}
                         tipo="text"
                         minLength="3"
-                        maxLength=""
                     />
 
                     <ListaSuspensa
                         obrigatorio={true}
-                        label="Categoría"
-                        placeholder="Selecione uma categoía..."
+                        label="Categoria"
+                        placeholder="Selecione uma categoria..."
                         itens={categorias}
                         valor={formData.categoria}
                         aoAlterado={(valor) => setFormData({ ...formData, categoria: valor })}
-
                     />
 
                     <CampoFormulario
@@ -89,8 +122,8 @@ function Formulario({ aoCadastrar, categorias }) {
                         obrigatorio={true}
                         label="Vídeo"
                         placeholder="URL do vídeo"
-                        valor={formData.link}
-                        aoAlterado={(valor) => setFormData({ ...formData, link: valor })}
+                        valor={formData.video}
+                        aoAlterado={(valor) => setFormData({ ...formData, video: valor })}
                         tipo="url"
                     />
 
@@ -100,25 +133,15 @@ function Formulario({ aoCadastrar, categorias }) {
                         placeholder="Sobre o que é esse vídeo?"
                         valor={formData.descricao}
                         aoAlterado={(valor) => setFormData({ ...formData, descricao: valor })}
-                        tipo="text"
                         minLength="10"
                         maxLength="250"
                     />
-
-                </div>
-                <div className={styles.botoes}>
-                    <BotaoFormulario
-                        children="Guardar"
-                        type='submit'
-                    />
-                    <BotaoFormulario
-                        children="Limpar"
-                        type='reset'
-                    />
-                </div>
+                <div>
+                    <BotaoFormulario children="Guardar" type="submit" />
+                    <BotaoFormulario children="Limpar" type="reset" />
             </div>
-        </form>
-    )
+        </FormStyle>
+    );
 }
 
-export default Formulario
+export default Formulario;

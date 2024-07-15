@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import CampoTexto from "../../componentes/CampoTexto"
-import ListaSuspensa from "../../componentes/ListaSuspensa"
+import React, { useState, useEffect } from 'react';
+import styled from "styled-components";
+import Formulario from '../../componentes/Formulario';
 
 const NovoStyle = styled.div`
     display: flex;
@@ -11,14 +11,14 @@ const NovoStyle = styled.div`
     color: #fff;
     font-family: Roboto;
     text-align: center;
-    section{
+    section {
     }
-    p{
+    p {
         font-size: 20px;
         font-weight: 300;
         text-transform: uppercase;
     }
-    div{
+    div {
         display: flex;
         width: 1172px;
         margin: 0 auto;
@@ -26,36 +26,22 @@ const NovoStyle = styled.div`
         border-left:none;
         border-right:none;
     }
-`
+`;
+
 const Titulo = styled.h1`
     margin: 0;
     padding-top: 60px;
     font-size: 60px;
     font-weight: bold;
-`
-export default function NovoVideo(props) {
-    
+`;
 
-    // const categoria = [
-    //     {
-    //         nome:'FRONT END',
-    //         cor:'#6BD1FF'
-    //     },
-    //     {
-    //         nome:'BACK END',
-    //         cor:'#00C86F'
-    //     },
-    //     {
-    //         nome:'MOBILE',
-    //         cor:'#FFBA05'
-    //     },
-    // ]
-    // const [cards, setCards] = useState([])
+export default function NovoVideo() {
+    const [categorias, setCategorias] = useState(['Front End', 'Back End', 'Mobile']);
 
-    // const aoNovoCardAdicionado = (card) => {
-    //     setCards([...cards, card])
-    // }
-    
+    const aoCadastrar = (novoVideo) => {
+        console.log('Novo vídeo cadastrado:', novoVideo);
+        // Você pode adicionar lógica adicional aqui, como atualizar a lista de vídeos
+    };
 
     return (
         <NovoStyle>
@@ -66,23 +52,7 @@ export default function NovoVideo(props) {
             <div>
                 <h2>Criar Card</h2>
             </div>
-
-            <form action="">
-
-                <CampoTexto 
-                    obrigatorio={true}
-                    label="Titulo"
-                    placeholder="  Titulo do Video"
-                />
-                {/* <ListaSuspensa
-                    obrigatorio={true}
-                    label="Categoria"
-                    itens={props.categorias}
-                    valor={categoria}
-                    aoAlterado={valor => setCategoria(valor)}
-                /> */}
-                
-            </form>
+            <Formulario aoCadastrar={aoCadastrar} categorias={categorias} />
         </NovoStyle>
-    )
+    );
 }

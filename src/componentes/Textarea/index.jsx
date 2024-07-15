@@ -1,4 +1,4 @@
-function CampoFormulario({ tipo, maxlength, minlength, placeholder, label, valor, obrigatorio = false, aoAlterado }) {
+function Textarea({ obrigatorio, label, placeholder, valor, aoAlterado, minLength, maxLength }) {
     const placeholderModificada = `${placeholder}...`;
 
     const aoDigitado = (evento) => {
@@ -8,17 +8,16 @@ function CampoFormulario({ tipo, maxlength, minlength, placeholder, label, valor
     return (
         <div>
             <label>{label}</label>
-            <input
-                type={tipo}
-                minLength={minlength}
-                maxLength={maxlength}
+            <textarea
                 value={valor}
                 onChange={aoDigitado}
                 required={obrigatorio}
                 placeholder={placeholderModificada}
+                minLength={minLength}
+                maxLength={maxLength}
             />
         </div>
     );
 }
 
-export default CampoFormulario;
+export default Textarea;
