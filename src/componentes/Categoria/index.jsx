@@ -64,6 +64,14 @@ export default function Categoria() {
         }
     };
 
+    const atualizarVideo = (videoAtualizado) => {
+        setVideos(prevVideos =>
+            prevVideos.map(video =>
+                video.id === videoAtualizado.id ? videoAtualizado : video
+            )
+        );
+    };
+
     return (
         <Container>
             <Banner
@@ -85,6 +93,7 @@ export default function Categoria() {
                                     categoria={categoria}
                                     onClick={() => handleCardClick(video)}
                                     onDelete={() => deletarVideo(video.id)} // Passa a função deletarVideo para Cards
+                                    atualizarVideo={atualizarVideo} // Passa a função atualizarVideo para Cards
                                 />
                             ))}
                     </AreaCard>

@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
@@ -84,12 +83,12 @@ const ModalStyle = styled.div`
     padding: 10px;
     resize: none;
     color: #fff;
-    width: 100%; /* Garante que o input e select ocupem toda a largura disponível */
-    box-sizing: border-box; /* Mantém o padding dentro do tamanho total do elemento */
+    width: 100%;
+    box-sizing: border-box;
   }
 
   textarea {
-    min-height: 150px; /* Altura mínima para o campo de texto multi-linha */
+    min-height: 150px;
   }
 
   ul {
@@ -114,53 +113,81 @@ const ModalStyle = styled.div`
   }
 `;
 
-export default function Modal({ onClose }) {
-    const handleCloseModal = () => {
-        onClose(); // Chama a função para fechar o Modal
-    };
+export default function Modal({ onClose, videoData, onInputChange, onSave }) {
+  const handleCloseModal = () => {
+    onClose(); 
+  };
 
-    return (
-        <ModalStyle>
-            <dialog open>
-                <h1>EDITAR CARD:</h1>
-                <form method="dialog">
-                    <div>
-                        <label>Titulo</label>
-                        <input type="text" placeholder="O que é JavaScript?" />
-                    </div>
+  const handleSave = (e) => {
+    e.preventDefault();
+    onSave();
+  };
 
-                    <div>
-                        <label>Categoria</label>
-                        <select>
-                            <option value="front-end">FRONT END</option>
-                            <option value="back-end">BACK END</option>
-                            <option value="mobile">MOBILE</option>
-                        </select>
-                    </div>
+  return (
+    <ModalStyle>
+      <dialog open>
+        <h1>EDITAR CARD:</h1>
+        <form onSubmit={handleSave}>
+          <div>
+            <label>Titulo</label>
+            <input
+              type="text"
+              name="titulo"
+              value={videoData.titulo}
+              onChange={onInputChange}
+              placeholder="O que é JavaScript?"
+            />
+          </div>
 
-                    <div>
-                        <label>Imagem</label>
-                        <input type="text" placeholder='https://i.ytimg.com/vi/c8mVlakBESE/hq720.jpg' />
-                    </div>
+          <div>
+            <label>Categoria</label>
+            <select name="categoria" value={videoData.categoria} onChange={onInputChange}>
+              <option value="FRONT END">FRONT END</option>
+              <option value="BACK END">BACK END</option>
+              <option value="MOBILE">MOBILE</option>
+            </select>
+          </div>
 
-                    <div>
-                        <label>Video</label>
-                        <input type="text" placeholder='https://www.youtube.com/watch?v=59txMBPLdPQ' />
-                    </div>
+          <div>
+            <label>Imagem</label>
+            <input
+              type="text"
+              name="thumbnail"
+              value={videoData.thumbnail}
+              onChange={onInputChange}
+              placeholder='https://i.ytimg.com/vi/c8mVlakBESE/hq720.jpg'
+            />
+          </div>
 
-                    <div>
-                        <label>Descricao</label>
-                        <textarea name="descricao" rows="4" placeholder='Descricao para o Video' />
-                    </div>
+          <div>
+            <label>Video</label>
+            <input
+              type="text"
+              name="video"
+              value={videoData.video}
+              onChange={onInputChange}
+              placeholder='https://www.youtube.com/watch?v=59txMBPLdPQ'
+            />
+          </div>
 
-                    <ul>
-                        <li><button type="submit">GUARDAR</button></li>
-                        <li><button type="reset">LIMPAR</button></li>
-                        {/* Adiciona o ícone para fechar o modal */}
-                        <li onClick={handleCloseModal}><IoIosCloseCircleOutline /></li>
-                    </ul>
-                </form>
-            </dialog>
-        </ModalStyle>
-    );
+          <div>
+            <label>Descricao</label>
+            <textarea
+              name="descricao"
+              rows="4"
+              value={videoData.descricao}
+              onChange={onInputChange}
+              placeholder='Descricao para o Video'
+            />
+          </div>
+
+          <ul>
+            <li><button type="submit">GUARDAR</button></li>
+            <li><button type="reset">LIMPAR</button></li>
+            <li onClick={handleCloseModal}><IoIosCloseCircleOutline /></li>
+          </ul>
+        </form>
+      </dialog>
+    </ModalStyle>
+  );
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CiTrash, CiEdit } from 'react-icons/ci';
-import Modal from '../../componentes/Modal'; // Importe o componente Modal adequado
+import Modal from '../../componentes/Modal';
+import { editarVideo } from '../../lib/axios';
 
 const Imagem = styled.div`
   background: url(${props => props.urlThumbnail});
@@ -62,11 +63,12 @@ const EditDeleteStyle = styled.div`
   }
 `;
 
-export default function Cards({ post, categoria, onClick, onDelete }) {
+export default function Cards({ post, categoria, onClick, onDelete, atualizarVideo }) {
   const [modalAberto, setModalAberto] = useState(false);
+  const [videoDados, setVideoDados] = useState(post); 
 
   const handleImageClick = () => {
-    onClick(post); // Passa o objeto completo do vídeo para a função recebida via props
+    onClick(post); 
   };
 
   const abrirModal = () => {
@@ -75,6 +77,25 @@ export default function Cards({ post, categoria, onClick, onDelete }) {
 
   const fecharModal = () => {
     setModalAberto(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setVideoDados(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      await editarVideo(videoDados.id, videoDados);
+      console.log('Vídeo atualizado com sucesso:', videoDados);
+      atualizarVideo(videoDados);
+    } catch (error) {
+      console.error('Erro ao atualizar vídeo:', error);
+    }
+    fecharModal();
   };
 
   return (
@@ -91,11 +112,12 @@ export default function Cards({ post, categoria, onClick, onDelete }) {
         </ul>
       </EditDeleteStyle>
       {modalAberto && (
-        <Modal onClose={fecharModal}>
-          {/* Conteúdo do modal aqui */}
-          <h2>Editar Postagem</h2>
-          <p>Aqui você pode editar as informações da postagem.</p>
-        </Modal>
+        <Modal
+          onClose={fecharModal}
+          videoData={videoDados}
+          onInputChange={handleInputChange}
+          onSave={handleSaveChanges}
+        />
       )}
     </StiloSection>
   );
