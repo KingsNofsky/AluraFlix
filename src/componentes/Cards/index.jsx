@@ -62,7 +62,7 @@ const EditDeleteStyle = styled.div`
   }
 `;
 
-export default function Cards({ post, categoria, onClick }) {
+export default function Cards({ post, categoria, onClick, onDelete }) {
   const [modalAberto, setModalAberto] = useState(false);
 
   const handleImageClick = () => {
@@ -86,7 +86,7 @@ export default function Cards({ post, categoria, onClick }) {
       />
       <EditDeleteStyle corBorda={categoria.cor}>
         <ul>
-          <li><button> <CiTrash /> DELETAR</button></li>
+          <li><button onClick={() => onDelete(post.id)}> <CiTrash /> DELETAR</button></li>
           <li><button onClick={abrirModal}> <CiEdit /> EDITAR </button></li>
         </ul>
       </EditDeleteStyle>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Cards from '../Cards';
 import Banner from '../Banner';
-import { listarVideos } from '../../lib/axios';
+import { listarVideos, deletarVideo as apiDeletarVideo } from '../../lib/axios';
 import categoriasData from '../../json/categoria.json';
 
 const Container = styled.div`
@@ -46,7 +46,6 @@ export default function Categoria() {
     }, []);
 
     useEffect(() => {
-
         if (videos.length > 0) {
             setVideoSelecionado(videos[0]);
         }
@@ -54,6 +53,15 @@ export default function Categoria() {
 
     const handleCardClick = (video) => {
         setVideoSelecionado(video);
+    };
+
+    const deletarVideo = async (id) => {
+        try {
+            await apiDeletarVideo(id);
+            setVideos(prevVideos => prevVideos.filter(video => video.id !== id));
+        } catch (error) {
+            console.error("Erro ao deletar vídeo:", error);
+        }
     };
 
     return (
@@ -76,12 +84,12 @@ export default function Categoria() {
                                     post={video}
                                     categoria={categoria}
                                     onClick={() => handleCardClick(video)}
+                                    onDelete={() => deletarVideo(video.id)} // Passa a função deletarVideo para Cards
                                 />
                             ))}
                     </AreaCard>
                 </div>
             ))}
-
         </Container>
     );
 }

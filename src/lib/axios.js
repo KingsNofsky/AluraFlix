@@ -17,8 +17,8 @@ export const listarVideos = async (url, setDados) => {
 
 export const deletarVideo = async (id) => {
     try {
-        const resposta = await api.delete(`/delete/${id}`);
-        return resposta;
+        const resposta = await api.delete(`/videos/${id}`);
+        return resposta.data;
     } catch (error) {
         console.error('Erro ao deletar vídeo:', error);
     }

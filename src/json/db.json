@@ -33,14 +33,6 @@
       "thumbnail": "https://i.ytimg.com/vi/WYvji5AXOfk/hq720.jpg"
     },
     {
-      "id": "5",
-      "categoria": "FRONT END",
-      "titulo": "sssssssssssssssssssssssssss",
-      "descricao": "adcasaskiosjgjdagijbadguaiouydsiukjagda",
-      "video": "https://www.youtube.com/watch?v=Lx_YsoMgP40",
-      "thumbnail": "https://i.ytimg.com/vi/Lx_YsoMgP40/hq720.jpg"
-    },
-    {
       "id": "6",
       "categoria": "BACK END",
       "titulo": "nane",
@@ -54,6 +46,22 @@
       "descricao": "\"Na porrada eu não tenho limitsssss\" HAHAHAHAHAHHAHA...",
       "thumbnail": "https://i.ytimg.com/vi/jem13p7LU_s/hq720.jpg",
       "video": "https://www.youtube.com/embed/jem13p7LU_s",
+      "categoria": "FRONT END"
+    },
+    {
+      "id": "4732",
+      "titulo": "Tela Class - Caçadores de Zica",
+      "descricao": "\"Falaste meu nome na frente da casa do coronel.\nNão lembro disso não.\nQueres ver o replay? Solta lá!\"",
+      "thumbnail": "https://i.ytimg.com/vi/VY2vci0r_9o/hq720.jpg",
+      "video": "https://www.youtube.com/embed/VY2vci0r_9o",
+      "categoria": "BACK END"
+    },
+    {
+      "id": "83c2",
+      "titulo": "PROJETO DE REACT E SASS PARA O SEU PORTFÓLIO - INTEGRAÇÃO DE REACT COM SASS",
+      "descricao": "Neste vídeo você vai aprender a fazer a integração de #react com #sass, vamos utilizar o #vite para criar o projeto, além da integração vamos criar um projeto de portfólio, que você pode utilizar como currículo virtual, para exibir as tecnologias que",
+      "thumbnail": "https://i.ytimg.com/vi/5h4vMtBlQQU/hq720.jpg",
+      "video": "https://www.youtube.com/embed/5h4vMtBlQQU",
       "categoria": "FRONT END"
     }
   ],
