@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: 'https://my-json-server.typicode.com/KingsNofsky/video-api/'
+    // baseURL: 'https://my-json-server.typicode.com/KingsNofsky/video-api/'
+    baseURL: 'http://localhost:3000'
     // baseURL: 'https://json-testes.vercel.app/'
 });
 

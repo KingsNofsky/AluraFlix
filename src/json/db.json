@@ -1,53 +1,77 @@
 {
-    "videos": [
-        {
-            "id": 1,
-            "categoria": "1",
-            "titulo": "SEO com React",
-            "descricao": "Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas dicas sobre performance e de quebra conhecer uma plataforma sensacional pra fazer deploy que é a Vercel. Tudo em 22 minutos nesse vídeo feito com todo o carinho do mundo construindo uma Pokedex!",
-            "video": "https://www.youtube.com/embed/c8mVlakBESE",
-            "thumbnail": "https://i.ytimg.com/vi/c8mVlakBESE/hq720.jpg"
-        },
-        {
-            "id": 2,
-            "categoria": "2",
-            "titulo": "KOF 2002 UM",
-            "descricao": "KOF 2002 UM (MUGEN) ACERTEI O COMBO DO DAIMON 95% DO LIFE KKKKKKKKKKKK",
-            "video": "https://www.youtube.com/embed/9SL338CTdYA",
-            "thumbnail": "https://i.ytimg.com/vi/9SL338CTdYA/hq720.jpg"
-        },
-        {
-            "id": 3,
-            "categoria": "3",
-            "titulo": "Rollergirl! - Skater Lady",
-            "descricao": "Artist: Rollergirl! Track: Skater Lady Album: Rollergirl",
-            "video": "https://www.youtube.com/embed/TYxcT_FoQA4",
-            "thumbnail": "https://i.ytimg.com/vi/TYxcT_FoQA4/hq720.jpg"
-        },
-        {
-            "id": 4,
-            "categoria": "3",
-            "titulo": "SAINT PEPSI - Better",
-            "descricao": "Artzie Music - #1 Destination for Unique Music!",
-            "video": "https://www.youtube.com/embed/WYvji5AXOfk",
-            "thumbnail": "https://i.ytimg.com/vi/WYvji5AXOfk/hq720.jpg"
-        }
-    ],
-    "categorias": [
-        {
-            "id": 1,
-            "nome": "FRONT END",
-            "cor": "#6BD1FF"
-        },
-        {
-            "id": 2,
-            "nome": "BACK END",
-            "cor": "#00C86F"
-        },
-        {
-            "id": 3,
-            "nome": "MOBILE",
-            "cor": "#FFBA05"
-        }
-    ]
+  "videos": [
+    {
+      "id": "1",
+      "categoria": "FRONT END",
+      "titulo": "SEO com React",
+      "descricao": "Eu to aqui pra nesse vídeo dizer que a gente vai aprender a começar uma app inspirada no desenho Pokémon com Nextjs e React, ver algumas dicas sobre performance e de quebra conhecer uma plataforma sensacional pra fazer deploy que é a Vercel. Tudo em 22 minutos nesse vídeo feito com todo o carinho do mundo construindo uma Pokedex!",
+      "video": "https://www.youtube.com/embed/c8mVlakBESE",
+      "thumbnail": "https://i.ytimg.com/vi/c8mVlakBESE/hq720.jpg"
+    },
+    {
+      "id": "2",
+      "categoria": "BACK END",
+      "titulo": "KOF 2002 UM",
+      "descricao": "KOF 2002 UM (MUGEN) ACERTEI O COMBO DO DAIMON 95% DO LIFE KKKKKKKKKKKK",
+      "video": "https://www.youtube.com/embed/9SL338CTdYA",
+      "thumbnail": "https://i.ytimg.com/vi/9SL338CTdYA/hq720.jpg"
+    },
+    {
+      "id": "3",
+      "categoria": "MOBILE",
+      "titulo": "Rollergirl! - Skater Lady",
+      "descricao": "Artist: Rollergirl! Track: Skater Lady Album: Rollergirl",
+      "video": "https://www.youtube.com/embed/TYxcT_FoQA4",
+      "thumbnail": "https://i.ytimg.com/vi/TYxcT_FoQA4/hq720.jpg"
+    },
+    {
+      "id": "4",
+      "categoria": "MOBILE",
+      "titulo": "SAINT PEPSI - Better",
+      "descricao": "Artzie Music - #1 Destination for Unique Music!",
+      "video": "https://www.youtube.com/embed/WYvji5AXOfk",
+      "thumbnail": "https://i.ytimg.com/vi/WYvji5AXOfk/hq720.jpg"
+    },
+    {
+      "id": "5",
+      "categoria": "FRONT END",
+      "titulo": "sssssssssssssssssssssssssss",
+      "descricao": "adcasaskiosjgjdagijbadguaiouydsiukjagda",
+      "video": "https://www.youtube.com/watch?v=Lx_YsoMgP40",
+      "thumbnail": "https://i.ytimg.com/vi/Lx_YsoMgP40/hq720.jpg"
+    },
+    {
+      "id": "6",
+      "categoria": "BACK END",
+      "titulo": "nane",
+      "descricao": "jogo de luta",
+      "video": "https://www.youtube.com/embed/p3RVSuRZYJg",
+      "thumbnail": "https://i.ytimg.com/vi/p3RVSuRZYJg/hq720.jpg"
+    },
+    {
+      "id": "cbad",
+      "titulo": "Garras de Baitola",
+      "descricao": "\"Na porrada eu não tenho limitsssss\" HAHAHAHAHAHHAHA...",
+      "thumbnail": "https://i.ytimg.com/vi/jem13p7LU_s/hq720.jpg",
+      "video": "https://www.youtube.com/embed/jem13p7LU_s",
+      "categoria": "FRONT END"
+    }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nome": "FRONT END",
+      "cor": "#6BD1FF"
+    },
+    {
+      "id": "2",
+      "nome": "BACK END",
+      "cor": "#00C86F"
+    },
+    {
+      "id": "3",
+      "nome": "MOBILE",
+      "cor": "#FFBA05"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { CiTrash, CiEdit } from 'react-icons/ci';
+import Modal from '../../componentes/Modal'; // Importe o componente Modal adequado
 
 const Imagem = styled.div`
   background: url(${props => props.urlThumbnail});
@@ -62,8 +63,18 @@ const EditDeleteStyle = styled.div`
 `;
 
 export default function Cards({ post, categoria, onClick }) {
+  const [modalAberto, setModalAberto] = useState(false);
+
   const handleImageClick = () => {
     onClick(post); // Passa o objeto completo do vídeo para a função recebida via props
+  };
+
+  const abrirModal = () => {
+    setModalAberto(true);
+  };
+
+  const fecharModal = () => {
+    setModalAberto(false);
   };
 
   return (
@@ -76,9 +87,16 @@ export default function Cards({ post, categoria, onClick }) {
       <EditDeleteStyle corBorda={categoria.cor}>
         <ul>
           <li><button> <CiTrash /> DELETAR</button></li>
-          <li><button> <CiEdit /> EDITAR </button></li>
+          <li><button onClick={abrirModal}> <CiEdit /> EDITAR </button></li>
         </ul>
       </EditDeleteStyle>
+      {modalAberto && (
+        <Modal onClose={fecharModal}>
+          {/* Conteúdo do modal aqui */}
+          <h2>Editar Postagem</h2>
+          <p>Aqui você pode editar as informações da postagem.</p>
+        </Modal>
+      )}
     </StiloSection>
   );
 }

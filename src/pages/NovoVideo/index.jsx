@@ -36,7 +36,7 @@ const Titulo = styled.h1`
 `;
 
 export default function NovoVideo() {
-    const [categorias, setCategorias] = useState(['Front End', 'Back End', 'Mobile']);
+    const [categorias, setCategorias] = useState(['FRONT END', 'BACK END', 'MOBILE']);
 
     const aoCadastrar = (novoVideo) => {
         console.log('Novo vídeo cadastrado:', novoVideo);

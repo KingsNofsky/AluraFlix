@@ -56,7 +56,7 @@ function Formulario({ aoCadastrar, categorias }) {
     const [formData, setFormData] = useState({
         titulo: '',
         descricao: '',
-        imagem: '',
+        thumbnail: '',
         video: '',
         categoria: '',
     });
@@ -65,7 +65,7 @@ function Formulario({ aoCadastrar, categorias }) {
         setFormData({
             titulo: '',
             descricao: '',
-            imagem: '',
+            thumbnail: '',
             video: '',
             categoria: '',
         });
@@ -113,8 +113,8 @@ function Formulario({ aoCadastrar, categorias }) {
                         obrigatorio={true}
                         label="Imagem"
                         placeholder="URL da imagem"
-                        valor={formData.imagem}
-                        aoAlterado={(valor) => setFormData({ ...formData, imagem: valor })}
+                        valor={formData.thumbnail}
+                        aoAlterado={(valor) => setFormData({ ...formData, thumbnail: valor })}
                         tipo="url"
                     />
 
